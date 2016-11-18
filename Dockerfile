@@ -59,7 +59,6 @@ RUN docker-php-ext-install mbstring \
    intl \
    bcmath \
    soap \
-   sqlite3 \
    readline
 
 RUN curl -sS https://getcomposer.org/installer | php -- --filename=composer --install-dir=/usr/local/bin
