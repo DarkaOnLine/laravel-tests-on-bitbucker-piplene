@@ -2,7 +2,7 @@ FROM php:7-fpm
 MAINTAINER Darius Matulionis <darius@matulionis.lt>
 
 # Install all required packages.
-RUN apt-get update && apt-get -y --force-yes install curl wget sqlite3
+RUN apt-get update && apt-get -y --force-yes install curl wget sqlite3 libmcrypt-dev libmcrypt4
 
 # Compile PHP, include these extensions.
 RUN docker-php-ext-install mbstring \
@@ -21,8 +21,7 @@ RUN docker-php-ext-install mbstring \
    intl \
    bcmath \
    soap \
-   ldap \
-   imap \
+   sqlite3 \
    readline
 
 RUN curl -sS https://getcomposer.org/installer | php -- --filename=composer --install-dir=/usr/local/bin
