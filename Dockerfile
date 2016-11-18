@@ -2,12 +2,7 @@ FROM php:7-fpm
 MAINTAINER Darius Matulionis <darius@matulionis.lt>
 
 # Install all required packages.
-RUN apt-get update && \
-  apt-get install \
-		curl \
-		wget \
-		sqlite3 \
-	&& rm -rf /var/lib/apt/lists/* 
+RUN apt-get update && apt-get install curl wget sqlite3 && rm -rf /var/lib/apt/lists/*
  
 # Compile PHP, include these extensions.
 RUN docker-php-ext-install mbstring \
