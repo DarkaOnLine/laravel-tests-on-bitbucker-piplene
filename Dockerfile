@@ -14,7 +14,7 @@ RUN echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sou
 RUN apt-get update -yqq --force-yes --fix-missing
 
 RUN apt-get -yqq --force-yes --fix-missing install \
-      apache2 curl git wget sendmail sqlite3 libc-client-dev yarn npm zip unzip\
+      apache2 curl git wget sendmail sqlite3 libc-client-dev npm zip unzip\
       php \
       libapache2-mod-php \
       php-cli \
@@ -35,6 +35,14 @@ RUN apt-get -yqq --force-yes --fix-missing install \
       php-soap \
       php-readline
 
+
+##########  Yarn install  ###############
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+RUN echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+
+RUN apt-get update -yqq --force-yes && apt-get -yqq --force-yes --fix-missing install yarn
+
+##########  APACHE  ##############
 RUN service apache2 restart
 
 COPY laravel.conf /etc/apache2/sites-available/laravel.conf
