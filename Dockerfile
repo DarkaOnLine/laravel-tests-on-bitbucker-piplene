@@ -7,12 +7,14 @@ ENV DEBIAN_FRONTEND noninteractive
 #Set variables
 ENV APPPORT=8081
 
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+RUN echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+
 # Update repo and install lamp, php, php dependencies, and phpmyadmin
-RUN apt-get update -yqq --force-yes --fix-missing && \
-    apt-get -yqq --force-yes install apt-utils
+RUN apt-get update -yqq --force-yes --fix-missing
 
 RUN apt-get -yqq --force-yes --fix-missing install \
-      apache2 curl git wget sqlite3 libc-client-dev zip unzip\
+      apache2 curl git wget sendmail sqlite3 libc-client-dev yarn npm zip unzip\
       php \
       libapache2-mod-php \
       php-cli \
@@ -46,8 +48,11 @@ RUN a2ensite 000-default && \
 
 RUN service apache2 restart
 
-# Downloading and installing curl
+# Downloading and installing composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+#GULP
+npm install --global gulp-cli
 
 EXPOSE 80
 EXPOSE 8081
