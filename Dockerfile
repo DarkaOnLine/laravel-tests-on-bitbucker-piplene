@@ -17,7 +17,7 @@ RUN apt-get -yqq --force-yes --fix-missing install \
       libapache2-mod-php \
       php-cli \
       php-mbstring \
-      php-pdo_mysql \
+      php-mysql \
       php-curl \
       php-json \
       php-intl \
@@ -27,7 +27,7 @@ RUN apt-get -yqq --force-yes --fix-missing install \
       php-bz2 \
       php-opcache \
       php-pgsql \
-      php-pdo_sqlite\
+      php-sqlite3\
       php-intl \
       php-bcmath \
       php-soap \
