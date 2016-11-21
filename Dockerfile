@@ -40,6 +40,7 @@ RUN apt-get update && apt-get -yqq --force-yes install \
       wget \
       sqlite3 \
       libmemcached-dev \
+      screen \
       libc-client-dev
 
 # Compile PHP, include these extensions.
