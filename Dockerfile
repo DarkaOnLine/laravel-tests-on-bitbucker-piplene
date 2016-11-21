@@ -11,7 +11,7 @@ ENV APPPORT=8081
 RUN apt-get update -yqq --force-yes --fix-missing
 
 RUN apt-get -yqq --force-yes --fix-missing install \
-      apache2 curl git wget sendmail sqlite3 libc-client-dev npm zip unzip\
+      build-essential apache2 curl git wget sendmail sqlite3 libc-client-dev npm zip unzip\
       php \
       libapache2-mod-php \
       php-cli \
@@ -33,11 +33,13 @@ RUN apt-get -yqq --force-yes --fix-missing install \
       php-readline
 
 
-##########  Yarn install  ###############
+##########  Node + Yarn install  ###############
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb http://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
-RUN apt-get update -yqq --force-yes && apt-get -yqq --force-yes --fix-missing install yarn
+RUN curl -sL https://deb.nodesource.com/setup_6.x | -E bash -
+
+RUN apt-get update -yqq --force-yes && apt-get -yqq --force-yes --fix-missing install nodejs yarn
 
 ##########  APACHE  ##############
 RUN service apache2 restart
