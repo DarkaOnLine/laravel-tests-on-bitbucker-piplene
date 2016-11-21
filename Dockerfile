@@ -7,9 +7,6 @@ ENV DEBIAN_FRONTEND noninteractive
 #Set variables
 ENV APPPORT=8081
 
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-RUN echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-
 # Update repo and install lamp, php, php dependencies, and phpmyadmin
 RUN apt-get update -yqq --force-yes --fix-missing
 
@@ -37,8 +34,8 @@ RUN apt-get -yqq --force-yes --fix-missing install \
 
 
 ##########  Yarn install  ###############
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-RUN echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb http://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
 RUN apt-get update -yqq --force-yes && apt-get -yqq --force-yes --fix-missing install yarn
 
