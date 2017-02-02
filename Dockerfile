@@ -34,12 +34,12 @@ RUN apt-get -yqq --force-yes --fix-missing install \
 
 
 ##########  Node + Yarn install  ###############
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-RUN echo "deb http://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+#RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+#RUN echo "deb http://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
 RUN curl -sL https://deb.nodesource.com/setup_7.x | bash -
 
-RUN apt-get update -yqq --force-yes && apt-get -yqq --force-yes --fix-missing install nodejs yarn
+RUN apt-get update -yqq --force-yes && apt-get -yqq --force-yes --fix-missing install nodejs
 
 ##########  APACHE  ##############
 RUN service apache2 restart
@@ -59,7 +59,7 @@ RUN service apache2 restart
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 #GULP
-RUN npm install --global gulp-cli
+RUN npm install --global gulp-cli yarn
 
 EXPOSE 80
 EXPOSE 8081
