@@ -7,30 +7,32 @@ ENV DEBIAN_FRONTEND noninteractive
 #Set variables
 ENV APPPORT=8081
 
+RUN add-apt-repository ppa:ondrej/php
+
 # Update repo and install lamp, php, php dependencies, and phpmyadmin
 RUN apt-get update -yqq --force-yes --fix-missing
 
 RUN apt-get -yqq --force-yes --fix-missing install \
       build-essential apache2 curl git wget sendmail sqlite3 libc-client-dev npm zip unzip\
-      php \
-      libapache2-mod-php \
-      php-cli \
-      php-mbstring \
-      php-mysql \
-      php-curl \
-      php-json \
-      php-intl \
-      php-gd \
-      php-xml \
-      php-zip \
-      php-bz2 \
-      php-opcache \
-      php-pgsql \
-      php-sqlite3\
-      php-intl \
-      php-bcmath \
-      php-soap \
-      php-readline
+      php7.1 \
+      libapache2-mod-php7.1 \
+      php7.1-cli \
+      php7.1-mbstring \
+      php7.1-mysql \
+      php7.1-curl \
+      php7.1-json \
+      php7.1-intl \
+      php7.1-gd \
+      php7.1-xml \
+      php7.1-zip \
+      php7.1-bz2 \
+      php7.1-opcache \
+      php7.1-pgsql \
+      php7.1-sqlite3\
+      php7.1-intl \
+      php7.1-bcmath \
+      php7.1-soap \
+      php7.1-readline
 
 
 ##########  Node + Yarn install  ###############
