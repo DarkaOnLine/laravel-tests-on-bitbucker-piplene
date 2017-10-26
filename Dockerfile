@@ -9,7 +9,7 @@ ENV APPPORT=8081
 
 RUN apt-get update -yqq --force-yes --fix-missing
 
-RUN apt-get install -y wget
+RUN apt-get install -y software-properties-common python-software-properties wget
 
 RUN apt-get remove -y --purge php*
 
