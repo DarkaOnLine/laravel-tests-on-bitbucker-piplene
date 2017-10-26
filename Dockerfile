@@ -7,6 +7,8 @@ ENV DEBIAN_FRONTEND noninteractive
 #Set variables
 ENV APPPORT=8081
 
+RUN apt-get install -y wget
+
 RUN apt-get remove -y --purge php*
 
 RUN add-apt-repository ppa:ondrej/php -y
