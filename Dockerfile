@@ -17,7 +17,7 @@ RUN locale-gen en_US.UTF-8
 RUN export LANG=C.UTF-8
 RUN export LC_ALL=C.UTF-8
 
-RUN add-apt-repository ppa:ondrej/php -yqq
+RUN LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php -y
 
 # Update repo and install lamp, php, php dependencies, and phpmyadmin
 RUN apt-get update -yqq --force-yes --fix-missing
