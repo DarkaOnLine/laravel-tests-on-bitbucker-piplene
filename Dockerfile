@@ -23,7 +23,16 @@ RUN LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php -y
 RUN apt-get update -yqq --fix-missing
 
 RUN apt-get -yqq --fix-missing install \
-      build-essential apache2 curl git wget sendmail sqlite3 libc-client-dev npm zip unzip libpng-dev\
+      build-essential \
+      apache2 \
+      curl \
+      git \
+      wget \
+      sqlite3 \
+      libpng-dev \
+      libc-client-dev \
+      zip \
+      unzip \
       php7.2 \
       libapache2-mod-php7.2 \
       php7.2-cli \
@@ -51,7 +60,7 @@ RUN echo "deb http://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.
 
 RUN curl -sL https://deb.nodesource.com/setup_9.x | bash -
 
-RUN apt-get update -yqq --force-yes && apt-get -yqq --force-yes --fix-missing install nodejs yarn
+RUN apt-get update -yqq && apt-get -yqq --fix-missing install nodejs yarn
 
 ##########  APACHE  ##############
 RUN service apache2 restart
@@ -70,15 +79,7 @@ RUN service apache2 restart
 # Downloading and installing composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-#GULP
-#RUN npm install --global gulp-cli yarn
-
 EXPOSE 80
 EXPOSE 8081
 
 WORKDIR /var/www/html
-
-RUN echo "============================================================"
-RUN echo "                          PHP VERSION                       "
-RUN php -v
-RUN echo "============================================================"
