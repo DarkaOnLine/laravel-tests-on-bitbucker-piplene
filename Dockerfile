@@ -20,9 +20,9 @@ RUN export LC_ALL=C.UTF-8
 RUN LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php -y
 
 # Update repo and install lamp, php, php dependencies, and phpmyadmin
-RUN apt-get update -yqq --force-yes --fix-missing
+RUN apt-get update -yqq --fix-missing
 
-RUN apt-get -yqq --force-yes --fix-missing install \
+RUN apt-get -yqq --fix-missing install \
       build-essential apache2 curl git wget sendmail sqlite3 libc-client-dev npm zip unzip libpng-dev\
       php7.2 \
       libapache2-mod-php7.2 \
