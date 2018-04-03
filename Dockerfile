@@ -23,33 +23,33 @@ RUN LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php -y
 RUN apt-get update -yqq --force-yes --fix-missing
 
 RUN apt-get -yqq --force-yes --fix-missing install \
-      build-essential apache2 curl git wget sendmail sqlite3 libc-client-dev npm zip unzip\
-      php7.1 \
-      libapache2-mod-php7.1 \
-      php7.1-cli \
-      php7.1-mbstring \
-      php7.1-mysql \
-      php7.1-curl \
-      php7.1-json \
-      php7.1-intl \
-      php7.1-gd \
-      php7.1-xml \
-      php7.1-zip \
-      php7.1-bz2 \
-      php7.1-opcache \
-      php7.1-pgsql \
-      php7.1-sqlite3\
-      php7.1-intl \
-      php7.1-bcmath \
-      php7.1-soap \
-      php7.1-readline
+      build-essential apache2 curl git wget sendmail sqlite3 libc-client-dev npm zip unzip libpng-dev\
+      php7.2 \
+      libapache2-mod-php7.2 \
+      php7.2-cli \
+      php7.2-mbstring \
+      php7.2-mysql \
+      php7.2-curl \
+      php7.2-json \
+      php7.2-intl \
+      php7.2-gd \
+      php7.2-xml \
+      php7.2-zip \
+      php7.2-bz2 \
+      php7.2-opcache \
+      php7.2-pgsql \
+      php7.2-sqlite3\
+      php7.2-intl \
+      php7.2-bcmath \
+      php7.2-soap \
+      php7.2-readline
 
 
 ##########  Node + Yarn install  ###############
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb http://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
-RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_9.x | bash -
 
 RUN apt-get update -yqq --force-yes && apt-get -yqq --force-yes --fix-missing install nodejs yarn
 
